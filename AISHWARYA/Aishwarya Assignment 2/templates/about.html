@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block head %} 
+  <title>About page</title>
+{% endblock %}
+
+
+{% block nav %}
+<li class="nav-item">
+  <a class="nav-link text-primary" href="{{ url_for('home') }}">Home</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link text-primary text-warning " href="{{ url_for('about') }}">About us</a>
+</li>
+
+<li class="nav-item">
+  <a class="nav-link text-primary" href="{{ url_for('add') }}">Add Job</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link text-primary  " href="{{ url_for('view') }}">View job</a>
+</li> 
+
+<li class="nav-item ">
+<a class="nav-link text-primary" href="{{ url_for('signin') }}">Sign in</a>
+</li>
+<li class="nav-item">
+<a class="nav-link text-primary" href="{{ url_for('signup') }}">Sign Up</a>
+</li>
+{% endblock %}
+
+{% block body %}
+<div class="container mt-3">
+  <h3 class="display-4"> About</h3>
+    <div class="mt-4 p-5 bg-primary text-white rounded">
+      <p class="display-6">Hey, I’m C.Santhosh Kumar pursuing a bachelor of engineering in one of the leading engineering colleges in Chennai.</p>
+    </div>
+  <br>
+  
+</div>
+{% endblock %}

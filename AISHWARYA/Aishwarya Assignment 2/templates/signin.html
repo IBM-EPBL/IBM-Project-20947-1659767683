@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block head %} 
+  <title>Sign In page</title>
+{% endblock %}
+
+{% block nav %}
+<li class="nav-item">
+  <a class="nav-link text-primary  " href="{{ url_for('home') }}">Home</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link text-primary " href="{{ url_for('about') }}">About us</a>
+</li>
+
+
+<li class="nav-item">
+    <a class="nav-link text-primary" href="{{ url_for('add') }}">Add Job</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link text-primary  " href="{{ url_for('view') }}">View job</a>
+  </li> 
+<li class="nav-item ">
+<a class="nav-link text-primary text-warning" href="{{ url_for('signin') }}">Sign in</a>
+</li>
+<li class="nav-item">
+<a class="nav-link text-primary" href="{{ url_for('signup') }}">Sign Up</a>
+</li>
+{% endblock %}
+
+
+{% block body %}
+<div class="container mt-3">
+    <div class="display-4">Register Form</div>
+    <form action="">
+        <div class="mt-3 mb-3">
+            <label for="validationCustom01" class="form-label">Email:</label>
+            <input type="email" class="form-control" required id="email validationCustom01" placeholder="Enter email id">
+        </div>
+        <div class="mb-3">
+            <label for="pwd" class="form-label">Password:</label>
+            <input type="password" class="form-control" required id="pwd" placeholder="Enter password">
+        </div>
+        <div class="mb-3">
+            <label for="pwd-1" class="form-label">Confirm Password:</label>
+            <input type="password" class="form-control" required id="pwd-1" placeholder="Re-Enter password">
+        </div>
+        <div class="form-check mb-3">
+            <label for="check-box" class="form-check-label">
+                <input type="checkbox" required class="form-check-input"> Agree Terms and Conditions
+            </label>
+        </div>
+        <button class="btn btn-primary" type="submit">Create an Account</button>
+        <p class="text-muted my-3 ">If you already Registered Please <a href="{{url_for('signup')}}">Log in</a></p>
+    </form>
+</div>
+{% endblock %}

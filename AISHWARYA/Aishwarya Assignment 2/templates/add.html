@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block head %} 
+  <title>add job</title>
+{% endblock %}
+
+
+{% block nav %}
+<li class="nav-item">
+  <a class="nav-link text-primary" href="{{ url_for('home') }}">Home</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link text-primary " href="{{ url_for('about') }}">About us</a>
+</li>
+
+<li class="nav-item">
+    <a class="nav-link text-primary text-warning " href="{{ url_for('add') }}">Add Job</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link text-primary  " href="{{ url_for('view') }}">View job</a>
+</li>    
+
+<li class="nav-item ">
+<a class="nav-link text-primary" href="{{ url_for('signin') }}">Sign in</a>
+</li>
+<li class="nav-item">
+<a class="nav-link text-primary" href="{{ url_for('signup') }}">Sign Up</a>
+</li>
+
+{% endblock %}
+
+{% block body %}
+
+<div class="display-4 text-center text-info">Post Your Job</div>
+
+<div class="container">
+    <form action="/adddata" method="POST" autocomplete="off">
+        <h2 class="page-header text-primary text-center mt-3">Enter a Job details below</h2>
+        <div class="form-group">
+            <label for="">Job Title</label>
+            <input type="text" class="form-control" name="title" required>
+        </div>
+        <div class="form-group">
+            <label for="">Job Description</label>
+            <textarea type="text" class="form-control" name="desc" required> </textarea>
+        </div>
+        <div class="form-group">
+            <label for="">Link to apply</label>
+            <input type="text" class="form-control" name="link" required>
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-block btn-success mt-3" value="submit">
+        </div>
+    </form>
+</div>
+
+{% endblock %}
