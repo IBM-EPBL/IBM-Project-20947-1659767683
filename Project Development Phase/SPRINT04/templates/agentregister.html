@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Sign in page(AGENT)</title>
+{% endblock %}
+
+{% block body %}
+
+<body style="background-color:black;" data-target="#pb-navbar" data-offset="200" data-spy="scroll">
+
+
+    <div class="container" style="padding-top:150px;">
+
+        <div class="row mb-5" >
+            <h1 class="page-header text-primary mx-auto">REGISTER <span style="color:white;">PAGE FOR AGENT</span></h1>
+        </div>
+
+        <div class="col-sm height: 100px; justify-content-center ">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for category,message in messages %}
+            <div class="alert alert-{{category}} " style="color: red;">{{message}}</div>
+            {% endfor %}
+            {% endif %}
+
+            {% endwith %}
+        </div>
+
+        <div class="row justify-content-center" style="height: 1000px;">
+            <form action="{{ url_for('agentform') }}" method="POST">
+
+                <div class="form-group">
+                    <label for="exampleInputname">Name</label>
+                    <input type="text" style="color: white; width: 400px;" class="form-control" id="name" name="name"
+                        placeholder="Enter Name" required>
+                </div>
+            
+                <div class="form-group">
+                    <label for="exampleInputEmail">Email address</label>
+                    <input type="email" style="color: white;  width: 400px;" class="form-control" id="email"
+                        name="email" placeholder="Enter email" required>
+                    <small id="emailHelp">We'll never share your email with anyone else.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputPassword">Password</label>
+                    <input type="password" style="color: white;  width: 400px;" class="form-control" id="password"
+                        name="password" placeholder="Password" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputphonenumber">Phone Number</label>
+                    <input type="tel" style="color: white;  width: 400px;" class="form-control" id="phonenumber"
+                        name="phonenumber" placeholder="Enter phone Number" pattern="[0-9]{10}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Select Service</label>
+                    <select class="form-control" placeholder="Choose Service want to prefer"
+                        id="service" name="service">
+                        <option>Hardware</option>
+                        <option>Software</option>
+                        <option>Online services</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputname">Enter Your Address</label>
+                    <input type="text" style="color: white; width: 400px;" class="form-control" id="address" name="address"
+                        placeholder="Enter Name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Enter City</label>
+                    <select class="form-control" placeholder="Choose Service want to prefer"
+                        id="city" name="city">
+                        <option>Chennai</option>
+                        <option>Bangalore</option>
+                        <option>Mumbai</option>
+                        <option>Cochi</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Enter State</label>
+                    <select class="form-control" placeholder="Choose Service want to prefer"
+                        id="state" name="state">
+                        <option>Tamil Nadu</option>
+                        <option>Karnataka</option>
+                        <option>Kerala</option>
+                        <option>Andhra Pradesh</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Enter Country</label>
+                    <select class="form-control" placeholder="Choose Service want to prefer"
+                        id="country" name="country">
+                        <option>Uk</option>
+                        <option>India</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputname">Resume Link</label>
+                    <input type="text" style="color: white; width: 400px;" class="form-control" id="link" name="link"
+                        placeholder="Enter Name" required>
+                    <small id="emailHelp">Please share your Resume with drive option as anyone</small>
+                </div>
+
+
+                <button type="submit" class="btn btn-primary mx-auto"><span
+                        style="color:black; font-weight: bolder;">Submit</span></button>
+
+
+            </form>
+        </div>
+
+
+        <div class="row d-flex">
+
+            <a href="{{ url_for('home') }}" class="btn btn-primary mx-auto" role="button"><span
+                    style="color:black; font-weight: bolder;">Back</span>
+            </a>
+
+        </div>
+
+    </div>
+
+    {% endblock %}
+</body>
+
+</html>
