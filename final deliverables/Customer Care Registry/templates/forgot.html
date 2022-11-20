@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Welcome</title>
+
+{% endblock %}
+
+
+{% block body %}
+
+<body style="background-color:black; padding-top: 100px;">
+
+    <div class="container" style="padding-top:100px; text-align: center;">
+
+
+        <div class="row height: 200px; ">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for category,message in messages %}
+            <div class="alert alert-{{category}} mx-auto" style="color: red; ">{{message}}</div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+        </div>
+
+        <div class="row mb-3">
+
+            <h1 class="page-header text-primary mx-auto">FORGOT <span style="color:white;">PAGE</span></h1>
+        </div>
+
+        <div class="container border border-primary mb-3">
+            <div class="row mb-3">
+                <h1 class="page-header text-primary mx-auto">CUSTOMER</h1>
+            </div>
+
+
+            <div class="row ">
+                <div class="col" style="height: 200px;">
+
+                    <form action="{{ url_for('forgot') }}" method="POST">
+
+                        <div class="form-group" style="padding-left: 60px;">
+                            <label for="exampleid">Id</label>
+                            <input type="tel" style="color: white; width: 400px; " class="form-control  " id="ida"
+                                name="custid" placeholder="Enter Id" required>
+
+                        </div>
+                        <div class="row  justify-content-center">
+                            <button type="submit" id="otp" class="btn btn-primary btn-md " style="color: black; font-weight: bolder;" >Send Email</button>
+                        </div>
+                    </form>
+                </div>
+
+
+                <div class="col " style="height: 200px;">
+                    <form action="{{ url_for('otp') }}" method="POST">
+
+                        <div class="form-group" style="padding-left: 60px;">
+                            <label for="exampleid">Enter your verification number</label>
+                            <input type="tel" style="color: white; width: 400px; padding-right:30px;"
+                                class="form-control " id="otp" name="otp" placeholder="Enter otp" required>
+
+                        </div>
+                        <div class="row justify-content-center">
+                            <button type="submit" class="btn btn-primary btn-md " style="color: black; font-weight: bolder;">verify OTP</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="container border border-primary mb-3">
+            <div class="row mb-3">
+                <h1 class="page-header text-primary mx-auto">AGENT</h1>
+            </div>
+
+
+            <div class="row ">
+                <div class="col" style="height: 200px;">
+
+                    <form action="{{ url_for('agentforgot') }}" method="POST">
+
+                        <div class="form-group" style="padding-left: 60px;">
+                            <label for="exampleid">Id</label>
+                            <input type="tel" style="color: white; width: 400px; " class="form-control  " id="ida"
+                                name="custid" placeholder="Enter Id" required>
+
+                        </div>
+                        <div class="row  justify-content-center">
+                            <button type="submit" id="otp" class="btn btn-primary btn-md " style="color: black; font-weight: bolder;">Send Email</button>
+                        </div>
+                    </form>
+                </div>
+
+
+                <div class="col " style="height: 200px;">
+                    <form action="{{ url_for('agentotp') }}" method="POST">
+
+                        <div class="form-group" style="padding-left: 60px;">
+                            <label for="exampleid">Enter your verification number</label>
+                            <input type="tel" style="color: white; width: 400px; padding-right:30px;"
+                                class="form-control " id="otp" name="otp" placeholder="Enter otp" required>
+
+                        </div>
+                        <div class="row justify-content-center">
+                            <button type="submit" class="btn btn-primary btn-md "style="color: black; font-weight: bolder;">verify OTP</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <a href="{{ url_for('home') }}" class="btn btn-primary mx-auto" role="button"><span
+                    style="color:black; font-weight: bolder;">Back</span>
+            </a>
+        </div>
+
+    </div>
+
+    {% endblock %}
+
+</body>
