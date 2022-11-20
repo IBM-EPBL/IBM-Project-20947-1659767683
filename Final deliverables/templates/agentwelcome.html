@@ -1,0 +1,187 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Welcome</title>
+
+
+{% endblock %}
+
+
+{% block body %}
+
+<body style="background-color:black;">
+
+    <div class="container-lg" style="padding-top: 100px;">
+
+        <div class="row" style="height:100px;">
+            <h1 class="page-header text-primary mx-auto">WELCOME TO <span style="color:white;">HOME PAGE</span></h1>
+        </div>
+
+        <div class="row col-md-offset-3 col-md-5 ">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for category,message in messages %}
+            <div class="alert alert-{{category}} text-center" style="color: red;">{{message}}</div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+        </div>
+
+        <div class="row" style="height:100px;">
+            <h1 class="page-header text-primary mx-auto">WELCOME AGENT <span
+                    style="color:white;">{{session['name']}}</span>
+            </h1>
+        </div>
+
+
+
+        <div class="row g-4 mb-4 ">
+            <div class="col">
+
+                <a style="color: black;" href="{{url_for('home')}}" class="btn btn-primary ">Logout</a>
+            </div>
+        </div>
+
+        <div id="accordion">
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
+                            aria-expanded="false" aria-controls="collapseOne">
+                            <h2 style="color: black;">SHOW ISSUE</h2>
+                        </button>
+                    </h5>
+                </div>
+
+                <div id="collapseOne" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
+
+                    <div class="card-body ">
+
+                        <div class="row mx-auto" style="height: 50px;">
+                            <div class="col" style="height:50px;">
+                                <h2 style="color: black;"> TOTAL NUMBER OF COMPLAINT : <span
+                                        style="color: black; font-weight: bolder; ">{{message}}</span></h2>
+                            </div>
+                        </div>
+
+                        {% for post in agent %}
+                        <div class="progress text-center">
+
+                          
+                            {% if 'Completed' == post.STATUS  %}
+                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-success"
+                                role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
+                                style="width: 100%; height:50px;"></div>
+                            
+
+                            {% elif 'Agent Alloted' == post.STATUS %}
+                            <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
+                            style="width: 50%; height:50px;"></div>
+                         
+                        
+                            {% elif 'Processing' == post.STATUS %}
+                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning"
+                            role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
+                            style="width: 25%; height:50px;"></div>
+
+                            {% endif %}
+                            
+
+
+
+                        </div>
+                        <div class="card text-white mb-3 container-lg" style="background-color: black;">
+                           
+
+                            <div class="container-lg card-header text-center rounded-pill border border-secondary ">
+
+                                <div class="hstack gap-3 mb-3 ">
+
+                                    <div class="row mb-3">
+                                        <div class="col-sm">
+                                            <h4><span class="text-primary"> ID : </span>{{post['ID']}}</h4>
+                                        </div>
+                                        <div class="col-sm">
+                                            <h4><span class="text-primary"> TOPIC : </span>{{post['TOPIC']}}</h4>
+                                        </div>
+                                        <div class="col-sm">
+                                            <h4><span class="text-primary"> DATE : </span> {{post['DATE']}}</h4>
+                                        </div>
+                                        <div class="col-sm">
+                                            <h4><span class="text-primary"> CUSTOMER ID : </span>
+                                                {{post['CUSTOMER_ID']}}</h4>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-sm">
+                                            <h4><span class="text-primary"> CUSTOMER NAME : </span>{{post['NAME']}}</h4>
+                                        </div>
+                                        <div class="col-sm">
+                                            <h4><span class="text-primary"> PHONENUMBER : </span>{{post['PHONENUMBER']}}
+                                            </h4>
+                                        </div>
+
+                                    </div>
+                                    <div class="row mb-3 d-flex justify-content-center">
+                                        <h4><span class="text-primary"> TICKET STATUS : </span>{{post['STATUS']}}
+                                        </h4>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="container card-header d-flex justify-content-center ">
+                                <div class="hstack gap-3 ">
+                                    <div class="row">
+
+                                        <h4><span class="text-primary"> SERVICE AGENT : </span>
+                                            {{post['SERVICE_AGENT']}}</h4>
+                                    </div>
+                                    <div class="row">
+                                        <h4><span class="text-primary"> SERVICE TYPE :
+                                            </span>{{post['SERVICE_TYPE']}}</h4>
+                                    </div>
+                                    <div class="row">
+                                        <h4><span class="text-primary"> ADDRESS :
+                                            </span>{{post['ADDRESS']}}</h4>
+                                    </div>
+                                    <div class="row mb-3">
+
+                                        <h4><span class="text-primary"> DESCRIPTION : </span>{{post['DESCRIPTION']}}
+                                        </h4>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="card-footer text-muted d-flex justify-content-center ">
+
+                                <div class="row">
+                                    <a style="color: black;" href="/completed/{{post['DESCRIPTION']}}"
+                                        class="btn btn-primary">COMPLETED</a>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        {% endfor %}
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+
+
+    </div>
+
+    {% endblock %}
+</body>
